@@ -4,10 +4,29 @@ Extension { #name : #JbArity2OperatorNode }
 JbArity2OperatorNode >> evaluateIn: environment [
 
 	| lhsValue rhsValue |
+
 	lhsValue := self lhs evaluateIn: environment.
 	rhsValue := self rhs evaluateIn: environment.
 	self operator = $*
 		ifTrue: [ ^lhsValue * rhsValue ].
 	self operator = $+
-		ifTrue: [ ^lhsValue + rhsValue ]
+		ifTrue: [ ^lhsValue + rhsValue ].
+	self operator = $-
+		ifTrue: [ ^lhsValue - rhsValue ].
+	self operator = $/
+		ifTrue: [ ^(lhsValue / rhsValue) asFloat ].	
+	self operator = '=='
+		ifTrue: [ ^lhsValue = rhsValue].	
+	self operator = '<'
+		ifTrue: [ ^lhsValue < rhsValue].							
+	self operator = '<='
+		ifTrue: [ ^lhsValue <= rhsValue].														
+	self operator = '>'
+		ifTrue: [ ^lhsValue > rhsValue].
+	self operator = '>='
+		ifTrue: [ ^lhsValue >= rhsValue].							
+	self operator = '!='
+		ifTrue: [ ^(lhsValue = rhsValue) not].															
+																	
+														
 ]

@@ -4,4 +4,5 @@ Extension { #name : #JbProgramNode }
 JbProgramNode >> executeIn: environment [
 
 	statements do: [ :each | each executeIn: environment ]
+
 ]
